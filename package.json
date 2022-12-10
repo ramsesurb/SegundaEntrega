@@ -1,0 +1,22 @@
+{
+  "name": "primeraentrega",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "configMongo": " node configMongo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase": "^9.15.0",
+    "firebase-admin": "^11.3.0",
+    "mongoose": "^6.8.0",
+    "router": "^1.3.7"
+  }
+}
