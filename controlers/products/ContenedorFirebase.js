@@ -39,8 +39,19 @@ class ContenedorFirebase {
         } catch (error) {
         console.log(error)
         }
+    }async getbyId(id){
+        try {
+          const snapshot = await productos.get(id);
+          snapshot.forEach(doc => {
+          console.log(doc.id, '=>', doc.data());
+          });
+            return snapshot
+            
+        } catch (error) {
+        console.log(error)
+        return []
+        }
     }
-
     
 }
   

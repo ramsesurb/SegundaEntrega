@@ -31,11 +31,10 @@ class ContenedorCartMongo {
    
     async deleteByIdCart (id){
         try {
-            const cart = await rute.getCart()
-            const deleteByid = cart.filter(e => e.id !== id)
-            await fs.writeFile(`./api/cart.json`, JSON.stringify(deleteByid ,null, 2))
-           
+            const deleteByid= await productoCartModel.findOneAndDelete({id:id})
             return deleteByid
+           
+           
         } catch (error) {
         console.log(error)
         }

@@ -14,11 +14,10 @@ class ContenedorMongo {
     }
     async getByid (id){
         try {
-            const prod = await rute.getAll()
-            const getByid = prod.filter(e => e.id === id)
-            console.log(getByid)
             
-            return getByid
+            const getByid = await productoModel.findOne({id:id})
+            return getByid 
+           
         } catch (error) {
         console.log(error)
         }
@@ -26,10 +25,7 @@ class ContenedorMongo {
     }
     async deleteById (id){
         try {
-            const content = await rute.getAll()
-            const deleteByid = content.filter(e => e.id !== id)
-            await fs.writeFile(`./api/productos.json`, JSON.stringify(deleteByid ,null, 2))
-            console.log(deleteByid)
+            const deleteByid= await productoModel.findOneAndDelete({id:id})
             return deleteByid
             
             
@@ -46,13 +42,24 @@ class ContenedorMongo {
             const newProduct = new productoModel ({id:(lastId+1), title: prod.title ,price: prod.price, thumbnail: prod.thumbnail , stock: prod.stock })
             await newProduct.save()
             console.log('producto guardado')
-            return saveCont
+            return newProduct
            
         } catch (error) {
         console.log(error)
         }
     }
-    async put(id){
+    async put(id, prod){
+        try {
+            const put= await productoModel.findOneAndUpdate({id:id},prod)
+            return put
+            
+            
+        } catch (error) {
+        console.log(error)
+        }
+
+    }
+  
         
     }
 
